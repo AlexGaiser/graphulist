@@ -6,7 +6,52 @@ import ItemForm from './components/ItemForm'
 
 class App extends Component {
   state = {
-    items: [{id:1, name: 'One'}, {id: 2, name: 'Two'}, {id: 3, name: 'Three'}, {id: 4, name:'Four'}, {id: 5, name: 'Five'}],
+    items: [
+      {
+        id:1,
+        name: 'One',
+        description: 'Hi',
+        priority: {
+          importance: 1,
+          complexity: 1
+        }
+      },
+      {
+        id: 2,
+        name: 'Two',
+        description: 'Hi',
+        priority: {
+          importance: 2,
+          complexity: 2
+        }
+      },
+      {
+        id: 3,
+        name: 'Three',
+        description: 'Hi',
+        priority: {
+          importance: 3,
+          complexity: 3
+        }
+      },
+      {
+        id: 4,
+        name:'Four',
+        description: 'Hi',
+        priority: {
+          importance: 4,
+          complexity: 4
+        }
+      },
+      {
+        id: 5,
+        name: 'Five',
+        description: 'Hi',
+        priority: {
+          importance: 5,
+          complexity: 5
+        }
+      }],
     itemToEdit: null
   }
 
