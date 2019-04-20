@@ -4,7 +4,7 @@ import GraphItem from '../list/ListItem';
 const Graph = (props) => {
   let graphItems = props.items.map((item, key) => {
     return (
-      <GraphItem item={item} key={key} />
+      <GraphItem setEditItem={props.setEditItem} id={item.id} item={item} key={key} />
     )
   })
 

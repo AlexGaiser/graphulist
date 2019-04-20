@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import List from './components/list/List';
 import Graph from './components/graph/Graph';
+import ItemForm from './components/ItemForm'
 
 class App extends Component {
   state = {
-    items: [{name: 1}, {name: 2}, {name: 3}, {name: 4}, {name: 5}]
+    items: [{id:1, name: 'One'}, {id: 2, name: 'Two'}, {id: 3, name: 'Three'}, {id: 4, name:'Four'}, {id: 5, name: 'Five'}],
+    itemToEdit: null
   }
 
+  getItemById = id => {
+    let currentItem = this.state.items.find(item => 
+      item.id === Number(id)
+    )
+    return currentItem
+  }
+
+  setEditItem = e => {
+    let id = e.target.id
+    let item = this.getItemById(id)
+
+    this.setState(prevState => ({
+      itemToEdit: item
+    }))
+  }
 
   render() {
     return (
@@ -27,8 +43,13 @@ class App extends Component {
             Learn React
           </a>
         </header> */}
-        <Graph items={this.state.items} />
-        <List items={this.state.items} />
+
+        {/* <Graph setEditItem={this.setEditItem} items={this.state.items} /> */}
+        <List setEditItem={this.setEditItem} items={this.state.items} />
+        {
+          this.state.itemToEdit &&
+          <ItemForm itemToEdit={this.state.itemToEdit}/>
+        }
       </div>
     );
   }

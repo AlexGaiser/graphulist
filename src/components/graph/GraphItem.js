@@ -1,9 +1,10 @@
 import React from 'react'
 
 const GraphItem = (props) => {
+  props.setEditItem(e.currentTarget.id)
 
   return (
-    <div id={props.key} className="graph-item-container">
+    <div onClick={} id={props.id} className="graph-item-container">
       I'm graph item {props.item.name}
     </div>
   )
