@@ -44,7 +44,7 @@ class App extends Component {
           </a>
         </header> */}
 
-        {/* <Graph setEditItem={this.setEditItem} items={this.state.items} /> */}
+        <Graph setEditItem={this.setEditItem} items={this.state.items} />
         <List setEditItem={this.setEditItem} items={this.state.items} />
         {
           this.state.itemToEdit &&
