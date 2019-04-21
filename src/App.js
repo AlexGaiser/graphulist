@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import List from './components/list/List';
 import Graph from './components/graph/Graph';
-import ItemForm from './components/ItemForm'
+import EditForm from './components/EditItem';
+import CreateForm from './components/CreateItem';
 
 class App extends Component {
   state = {
@@ -52,7 +53,8 @@ class App extends Component {
           complexity: 5
         }
       }],
-    itemToEdit: null
+    itemToEdit: null,
+    renderCreateItem: true
   }
 
   getItemById = id => {
@@ -68,6 +70,20 @@ class App extends Component {
 
     this.setState(prevState => ({
       itemToEdit: item
+    }))
+  }
+
+  createItem = (newItem) => {
+    this.setState(prevState => ({
+      items: [...prevState.items, newItem]
+    }))
+    console.log(this.state.items)
+  }
+
+  toggleForm = e => {
+    e.preventDefault()
+    this.setState(prevState => ({
+      itemToEdit: null
     }))
   }
 
@@ -92,8 +108,14 @@ class App extends Component {
         <Graph setEditItem={this.setEditItem} items={this.state.items} />
         <List setEditItem={this.setEditItem} items={this.state.items} />
         {
-          this.state.itemToEdit &&
-          <ItemForm itemToEdit={this.state.itemToEdit}/>
+          this.state.itemToEdit
+            ?
+              <div>
+                <EditForm itemToEdit={this.state.itemToEdit} /> 
+                <button onClick={this.toggleForm}>New Task</button>
+              </div>
+            :
+              <CreateForm createItem={this.createItem}/>  
         }
       </div>
     );

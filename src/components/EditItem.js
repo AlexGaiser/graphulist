@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 
-class ItemForm extends Component {
+class EditForm extends Component {
   state = {
-    maxComplexity: null
+    //maxComplexity: null
   }
 
-  
   // functions below For use with user-defined options
   // setComplexity = (e) => {
   //   let val = Number(e.target.value)
@@ -40,11 +39,10 @@ class ItemForm extends Component {
           defaultValue={this.props.itemToEdit.name}
         />
 
-        <fieldset>
+        {/* <fieldset>
           <legend>Priority</legend>
             <label htmlFor="importance">Importance:</label>
             <input
-              // placeholder="Importance"
               defaultValue={this.props.itemToEdit.priority.importance}
               id="importance"
               name="importance"
@@ -52,12 +50,15 @@ class ItemForm extends Component {
 
             <label htmlFor="complexity">Complexity:</label>
             <input
-              // placeholder="Complexity"
               defaultValue={this.props.itemToEdit.priority.complexity}
               id="complexity"
               name="complexity"
             />
-        </fieldset>
+        </fieldset> */}
+
+        <button onClick={this.props.updateTask} type='button'>Update Task</button>
+        
+        <button onClick={this.props.deleteTask} type='button'>Delete Task</button>
         
         {/* For use with user-defined options */}
         {/* <input onChange={this.setComplexity} placeholder="Max Complexity" type="number"/>
@@ -72,4 +73,4 @@ class ItemForm extends Component {
   }
 }
  
-export default ItemForm;
+export default EditForm;
